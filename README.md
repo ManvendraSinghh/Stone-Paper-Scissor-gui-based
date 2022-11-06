@@ -14,3 +14,5 @@ Installing PIL by :-
 Pip install pillow
 
 All other mmodules are preinstalled with python So we don't need to install them separately
+
+Now just simply Clone this project onto your system and run the .py file 
