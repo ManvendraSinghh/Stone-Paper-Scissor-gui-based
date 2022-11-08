@@ -4,6 +4,15 @@ from random import randint
 import pygame
 import time
 
+# for creating it an EXE file
+import sys
+import os
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
 
 # main window
 
@@ -20,33 +29,33 @@ condition.grid(row=0, column=2) #positioning it on the root windows
 
 # Background Theme Music
 pygame.mixer.init()
-pygame.mixer.music.load("SuperMarioBros.ogg")
+pygame.mixer.music.load(resource_path("SuperMarioBros.ogg"))
 pygame.mixer.music.set_volume(0.3)
 pygame.mixer.music.play(-1)
 
 
 # Sound Effects
 def playwin():
-    win = pygame.mixer.Sound("Stone_Paper_Scissor/mario_coin.wav")
+    win = pygame.mixer.Sound(resource_path("mario_coin.wav"))
     win.play()
 
 def playlose():
-    lose = pygame.mixer.Sound("Stone_Paper_Scissor/lose.mp3")
+    lose = pygame.mixer.Sound(resource_path("lose.mp3"))
     lose.play()
 
 def playtie():
-    tie = pygame.mixer.Sound("Stone_Paper_Scissor/axedraw.mp3")
+    tie = pygame.mixer.Sound(resource_path("axedraw.mp3"))
     tie.play()
 
 def playwon():
     pygame.mixer.music.pause()
-    pygame.mixer.music.load("Stone_Paper_Scissor/mario_stage_clear.wav")
+    pygame.mixer.music.load(resource_path("mario_stage_clear.wav"))
     pygame.mixer.music.play()
     root.update()
     time.sleep(5.2)
     
 def playlost():
-    pygame.mixer.music.load("Stone_Paper_Scissor/mario_die.wav")
+    pygame.mixer.music.load(resource_path("mario_die.wav"))
     pygame.mixer.music.play()
     root.update()
     time.sleep(2.5)
@@ -54,12 +63,12 @@ def playlost():
 
 # picture
 
-rock_img = ImageTk.PhotoImage(Image.open("Stone_Paper_Scissor/rock_user.png"))
-paper_img = ImageTk.PhotoImage(Image.open("Stone_Paper_Scissor/paper_user.png"))
-scissor_img = ImageTk.PhotoImage(Image.open("Stone_Paper_Scissor/scissors_user.png"))
-rock_img_comp = ImageTk.PhotoImage(Image.open("Stone_Paper_Scissor/rock.png"))
-paper_img_comp = ImageTk.PhotoImage(Image.open("Stone_Paper_Scissor/paper.png"))
-scissor_img_comp = ImageTk.PhotoImage(Image.open("Stone_Paper_Scissor/scissors.png"))
+rock_img = ImageTk.PhotoImage(Image.open(resource_path("rock_user.png")))
+paper_img = ImageTk.PhotoImage(Image.open(resource_path("paper_user.png")))
+scissor_img = ImageTk.PhotoImage(Image.open(resource_path("scissors_user.png")))
+rock_img_comp = ImageTk.PhotoImage(Image.open(resource_path("rock.png")))
+paper_img_comp = ImageTk.PhotoImage(Image.open(resource_path("paper.png")))
+scissor_img_comp = ImageTk.PhotoImage(Image.open(resource_path("scissors.png")))
 
 
 # insert picture
@@ -201,7 +210,7 @@ def restart():
     
     playerScore["text"] = '0'
     computerScore["text"] = '0'
-    pygame.mixer.music.load("SuperMarioBros.ogg") # to restart music
+    pygame.mixer.music.load(resource_path("SuperMarioBros.ogg")) # to restart music
     pygame.mixer.music.set_volume(0.3) 
     pygame.mixer.music.play(-1) # to play it on loop we use '-1'
     updateMessage("!! New Game started !!") 
@@ -217,3 +226,4 @@ scissor = Button(root, width=20, height=2, text="SCISSOR",
                  bg="#0ABDE3", fg="white", command=lambda: updateChoice("scissor")).grid(row=2, column=3)
 
 root.mainloop()
+
