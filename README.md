@@ -1,3 +1,6 @@
+![image](https://github.com/ManvendraSinghh/Stone-Paper-Scissor-gui-based/assets/117578356/65251700-2a0f-4e17-ad1c-a74b62542f5e)
+
+
 # Stone-Paper-Scissor-gui-based
 I have tried to create a Stone Paper Scissor game based on GUI interface. For which I have learnt the basic concepts from various resources like Youtube, etc.  
 and tried to add up some more features on that !
